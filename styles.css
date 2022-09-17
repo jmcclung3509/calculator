@@ -1,0 +1,90 @@
+body {
+    display: flex;
+    justify-content: center;
+}
+.container {
+    width: 95%;
+    height: 100vh;
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+
+}
+.calc_container {
+    width: 100%;
+    height: 600px;
+    max-height: 600px;
+    border: 2px solid darkgray;
+    border-radius: 10px;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #D9D9D9;
+
+}
+.output_container{
+ width: 100%;
+ height: 100px;
+ background-color: #F3F0C8;
+ display: flex;
+ justify-content: center;
+ flex-wrap: wrap;
+ gap: 20px;
+ padding: 20px;
+ box-sizing: border-box;
+ margin:20px auto 40px;
+ border-radius: 10px;
+ 
+}
+.equation, .input{
+    width: 100%;
+    text-align: right;
+}
+.equation {
+    font-size: .875rem;
+    color: grey;
+}
+.input {
+    font-size: 1.5rem;
+}
+.calc_button_container {
+    display: flex;
+    justify-content: space-between;
+    flex-flow: row wrap;
+    gap: 10px;
+    max-height: 450px;
+}
+.btn {
+    width: 20%;
+    aspect-ratio: 1;
+    font-size: 1.2rem;
+    border : none;
+    border-radius: 7px;;
+    
+}
+.remove_btns {
+    background-color: rgbA(253, 3, 93, 42%)
+}
+.operator_btn {
+    background-color: #79D7F2;
+    font-size: 1.5rem;
+}
+.equal_btn {
+    background-color: #6EF09A;
+}
+.number_btn{
+    background-color: #F5F5F5;
+}
+.fa {
+    color: black;
+    font-size: 1rem;
+}
+.icon-btn img{
+    width: 60%;
+}
+@media screen and  (min-width: 780px){
+    .calc_container{
+        max-width: 350px;
+        max-height: 550px;
+    }
+    
+}
