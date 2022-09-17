@@ -31,8 +31,7 @@ const zeroBtn = document.getElementById("0").addEventListener("click", getValue)
 const operators = document.querySelectorAll(".operator_btn")
 for (let operator of operators){
     operator.addEventListener("click", getOperator)
-
-
+    operator.addEventListener("click", setNumState)
 }
 equals.addEventListener("click", endEquation)
 
@@ -78,23 +77,25 @@ function getNum2(){
 
 
 
-// function setNumState(){
-//     if (num1Done == false && num2Done == false){
-//         num1Done = true
-//         num2Done = false
-// } else if (num1Done == true && num2Done == false){
-//     num1Done = false
-//     num2Done = true
-// }
-// console.log(num1Done, num2Done)
-// }
-// function setNumState(){
-//     num1Done = true
-//     num2Done = true
-//     console.log(num1Done, num2Done)
-//     getNum2()
+function setNumState(){
+    if (isNum1 == false && isNum2 == false){
 
-// }
+        isNum1 = true
+        isNum2 = false
+} else if (isNum1 == true && isNum2 == false){
+   isNum1 = false
+    isNum2 = true
+}
+console.log(num1Done, num2Done)
+}
+
+function setNumState(){
+    num1Done = true
+    num2Done = true
+    console.log(num1Done, num2Done)
+    getNum2()
+
+}
 
 function setInput(value){
     inputText+=value
