@@ -1,18 +1,18 @@
 //get DOM elements
 
-const equationCont = document.querySelector(".equation")
-const inputCont = document.querySelector(".input")
+const equationContainer = document.querySelector(".equation")
+const inputContainer = document.querySelector(".input")
 
 //buttons
 
 const backspace = document.getElementById("backspace")
 const clear = document.getElementById("clear")
-const divisibleBtn = document.getElementById("divisible").addEventListener("click", getOperator)
-const addBtn = document.getElementById ("add").addEventListener("click", getOperator)
-const divideBtn = document.getElementById("divide").addEventListener("click", getOperator)
-const multiplyBtn = document.getElementById("multiply").addEventListener("click", getOperator)
-const subtractBtn = document.getElementById("minus").addEventListener("click", getOperator)
-const equalBtn = document.getElementById("equals").addEventListener("click", getOperator)
+const divisibleBtn = document.getElementById("divisible")
+const addBtn = document.getElementById ("add")
+const divideBtn = document.getElementById("divide")
+const multiplyBtn = document.getElementById("multiply")
+const subtractBtn = document.getElementById("minus")
+const equalBtn = document.getElementById("equals")
 const plusMinusBtn = document.getElementById("negative")
 const decimalBtn = document.getElementById("decimal")
 
@@ -27,14 +27,32 @@ const twoBtn = document.getElementById("2").addEventListener("click", getValue)
 const oneBtn = document.getElementById("1").addEventListener("click", getValue)
 const zeroBtn = document.getElementById("0").addEventListener("click", getValue)
 
+const operators = document.querySelectorAll(".operator_btn")
+for (let operator of operators){
+    console.log(operator)
+    operator.addEventListener("click", getValue)
+
+}
+
 let numberComplete = false
 let num1Done = false
 operatorIsDone = false
 
 function getValue(e){
+    console.log("click")
    let value = e.target.textContent
+setInput(value)
+setEquation(value)
 return value
 
+
+}
+function setInput(value){
+    inputContainer.textContent = value
+
+}
+function setEquation(value){
+    equationContainer.textContent = value
 
 }
 // function getNumber(num1, num2){
