@@ -31,11 +31,13 @@ const operators = document.querySelectorAll(".operator_btn")
 for (let operator of operators){
     console.log(operator)
     operator.addEventListener("click", getValue)
+    operator.addEventListener("click", equationState)
 
 }
 
 let numberComplete = false
 let num1Done = false
+let num2Done = false
 operatorIsDone = false
 
 function getValue(e){
@@ -46,6 +48,19 @@ setEquation(value)
 return value
 
 
+}
+function equationState(){
+    if (num1Done == false && num2Done == false){
+        num1Done = true
+        num2Done = false
+        console.log(num1Done, num2Done)
+        
+    }else {
+        console.log("is it working")
+        num1Done = true
+        num2Done = true
+        console.log(num1Done, num2Done)
+    }
 }
 function setInput(value){
     inputContainer.textContent = value
@@ -78,15 +93,15 @@ function setEquation(value){
 
 // }
 
-function getOperator(e){
-    // numberComplete = true
-    num1Done = true
-    let operator = e.target.textContent
+// function getOperator(e){
+//     // numberComplete = true
+//     num1Done = true
+//     let operator = e.target.textContent
 
-    operatorIsDone = true
-    console.log(operator)
-    return operator
-}
+//     operatorIsDone = true
+//     console.log(operator)
+//     return operator
+// }
 
 function operate(num1, operator, num2){
  num1 = getNumber(num1)
