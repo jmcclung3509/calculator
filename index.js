@@ -1,7 +1,8 @@
 //get DOM elements
 
-const equationContainer = document.querySelector(".equation")
-const inputContainer = document.querySelector(".input")
+let equationContainer = document.querySelector(".equation")
+let inputContainer = document.querySelector(".input")
+let operatorContainer = document.querySelector(".operatorContainer")
 
 //buttons
 
@@ -29,109 +30,132 @@ const zeroBtn = document.getElementById("0").addEventListener("click", getValue)
 
 const operators = document.querySelectorAll(".operator_btn")
 for (let operator of operators){
-    console.log(operator)
-    operator.addEventListener("click", getValue)
-    operator.addEventListener("click", equationState)
+    operator.addEventListener("click", getOperator)
+
 
 }
+equals.addEventListener("click", endEquation)
+
 
 let numberComplete = false
-let num1Done = false
-let num2Done = false
-operatorIsDone = false
+let isNum1 = false
+let isNum2 = false
+
+let num1 = ""
+let num2=""
+let operator = ""
+let inputText = ""
+let equationText = ""
+
 
 function getValue(e){
-    console.log("click")
    let value = e.target.textContent
 setInput(value)
 setEquation(value)
-return value
-
-
 }
-function equationState(){
-    if (num1Done == false && num2Done == false){
-        num1Done = true
-        num2Done = false
-        console.log(num1Done, num2Done)
-        
-    }else {
-        console.log("is it working")
-        num1Done = true
-        num2Done = true
-        console.log(num1Done, num2Done)
+
+function getNum1(){
+    if (isNum1== true){
+        num1 = inputContainer.textContent
     }
+return num1
 }
+function clearInput() {
+       inputContainer.textContent = ""
+     inputText = ""
+}
+
+function getNum2(){
+    if ( isNum2 == true){
+    
+    num2 = inputContainer.textContent  
+    console.log(num2)
+    }
+
+    return num2
+
+}
+
+
+
+// function setNumState(){
+//     if (num1Done == false && num2Done == false){
+//         num1Done = true
+//         num2Done = false
+// } else if (num1Done == true && num2Done == false){
+//     num1Done = false
+//     num2Done = true
+// }
+// console.log(num1Done, num2Done)
+// }
+// function setNumState(){
+//     num1Done = true
+//     num2Done = true
+//     console.log(num1Done, num2Done)
+//     getNum2()
+
+// }
+
 function setInput(value){
-    inputContainer.textContent = value
+    inputText+=value
+    inputContainer.textContent = inputText
 
 }
 function setEquation(value){
-    equationContainer.textContent = value
+    equationText += value
+    equationContainer.textContent = equationText
+}
+
+function getOperator(e){
+
+    operator = e.target.textContent
+   setOperatorContainer(operator)
+    clearInput()
 
 }
-// function getNumber(num1, num2){
-//     if (num1Done == false) {
-//         if (!num1){
-//             num1 = getValue(num1)   
-//          } else if ( num1){
-//         num1 += getValue(num1)
-//     } 
-//     console.log(num1)
-  
-//     return num1
-// } else if (num1Done == true && operatorIsDone ==true){
 
-//         if (!num2){
-//          num2 = getNumber(num2)
-//          } else if ( num2){
-//         num2 += getValue(num2)
-//     }
-//     return num2
-
-// } 
-
-// }
-
-// function getOperator(e){
-//     // numberComplete = true
-//     num1Done = true
-//     let operator = e.target.textContent
-
-//     operatorIsDone = true
-//     console.log(operator)
-//     return operator
-// }
-
-function operate(num1, operator, num2){
- num1 = getNumber(num1)
- console.log(num1)
+function setOperatorContainer(operatorValue){
+ operatorContainer.textContent = operatorValue
+}
+function getOperatorValue(){
+    operator = operatorContainer.textContent
+    return operator
+}
 
 
-    num2 = getNumber(num2)
+
+function endEquation(){
+    num1 = getNum1()
+    console.log(num1)
+operator = getOperatorValue()
+
+    num2= getNum2()
     console.log(num2)
-    operator = getOperator(operator)
+    console.log(`num1 = ${num1}, operator=${operator}, num2= ${num2}`)
+}
+
+
+
+
+
+function operate(num1, num2, operator){
+    console.log(num1, num2, operator)
+    // if (e.target.textContent == "+"){
+   
+    //     return operator
+    //   }else if (e.target.textContent == "-"){
+    //     let  operator = "minus"
+    //     return operator
+    //   } else if (e.target.textContent == "x"){
+    //     let operator = "multiply"
+    //     return operator
+    //   } else {
+    //     let  operator = "divide"
+    //     return operator
+    //   }
+}
  
 
-    return `${num1} ${operator} ${num2}`
-}
-
-// console.log(operate("2" ,"+" ,"3"))
-// function operate(num1,  operator, num2) {
-//     if(numberComplete = false && !num1)
-//      num1 = parseInt(getValue(num1))
-
-
-// } else if (numberComplete = false && num1) {
-//    num1 += parseInt(getValue(num1))
-// } else if (numberComplete = true{
-    
-
-// }
-// return operate
-
-
-//operator functions
 
 function add (num1, num2){
     return num1 + num2
