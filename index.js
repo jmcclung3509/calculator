@@ -30,12 +30,14 @@ const zeroBtn = document.getElementById("0")
 const operators = document.querySelectorAll(".operator_btn")
 for (let operator of operators){
     operator.addEventListener("click", getOperator)
+    operator.addEventListener("click", getValueEquation )
    
 }
 
 const numbers = document.querySelectorAll(".number_btn")
 for(let number of numbers){
     number.addEventListener("click", getValue )
+    number.addEventListener("click", getValueEquation )
 }
 
 
@@ -59,27 +61,25 @@ function clearInput() {
 
 function getValue(e){
     value = e.target.textContent
-
 setInput(value)
-setEquation(value)
-
 
 }
 
+function getValueEquation(e){
+    value = e.target.textContent
+    setEquation(value)
 
+}
 
 function setInput(value){
-
-
-
     inputText+=value
     inputContainer.textContent = inputText
-    
 
 }
 
 function setEquation(value){
-    equationText += value
+    equationText +=  value
+    console.log(equationText)
     equationContainer.textContent = equationText
 }
 
@@ -88,8 +88,10 @@ function getOperator(e){
 operator = e.target.textContent
 setCurrentNum(operator)
 console.log(operator)
-
-        clearInput()
+if (operator !== "="){
+    clearInput()
+}
+        // clearInput()
 
 }
 function setCurrentNum(operator) {
@@ -97,47 +99,34 @@ function setCurrentNum(operator) {
         currentNum = inputContainer.textContent
         if (num1 == ""){
             num1 = currentNum
-           
             operator1 = operator
         } else {
             num1 = num1
       operator1 = operator1
             num2 = currentNum
-           
-            operator2 = operator
+            console.log(num2, currentNum)
+    
+            // operator2 = operator
             console.log(num1, num2, operator1, operator2)
-     
-        
         }
-
-        return {num1, num2, operator1}
-        console.log(num1, operator1, num2, operator2)
-        // return{ num1, num2, operator1}
-       
-
-  
+        return {num1, num2, operator1, operator2}
 }
+
 function setOperator(operatorValue){
 operator = operatorValue
 
-
 }
-// function waitForData(){
-//     if (num2 !== ""){
-//         endEquation()
-//     }
-// }
 
 function endEquation(num1, num2, operator1){
-
 let data = setCurrentNum()
+num1 = data.num1
+ num2 = data.num2
+ operator1 = data.operator1
+
 console.log(data)
+console.log(num1, num2, operator1)
 }
 
-function operate(num1, num2, operator){
-
-    console.log(num1, num2, operator)
-}
 
 
 
