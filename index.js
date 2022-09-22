@@ -67,6 +67,20 @@ inputContainer.textContent = ""
 equationContainer.textContent = ""
 }
 
+backspace.addEventListener("click", removeValue)
+function removeValue(){
+    console.log(inputText)
+   
+   inputText = inputText.substring(0, inputText.length -1)
+    inputContainer.textContent = inputText
+
+    console.log(equationText)
+    equationText = equationText.substring(0, equationText.length-1)
+    console.log(equationText)
+    equationContainer.textContent = equationText
+
+}
+
 function clearInput() {
     inputContainer.textContent = ""
   inputText = ""
@@ -91,9 +105,9 @@ function setInput(value){
 }
 
 function setEquation(value){
-    equationText += (" ") + value
+    equationText += value
     console.log(equationText)
-    equationContainer.textContent = equationText
+    equationContainer.textContent = equationText 
 }
 
 function getOperator(e){
