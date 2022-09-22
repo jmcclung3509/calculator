@@ -40,7 +40,6 @@ for(let number of numbers){
     number.addEventListener("click", getValueEquation )
 }
 
-
 equals.addEventListener("click", endEquation)
 
 operatorClicked = false
@@ -53,6 +52,20 @@ let operator1
 let operator2
 let inputText = ""
 let equationText = ""
+let result = ""
+
+clear.addEventListener("click", clearAll)
+function clearAll(){
+num1= ""
+num2=""
+operator1=""
+operator2=""
+result = ""
+equationText = ""
+inputText = ""
+inputContainer.textContent = ""
+equationContainer.textContent = ""
+}
 
 function clearInput() {
     inputContainer.textContent = ""
@@ -78,7 +91,7 @@ function setInput(value){
 }
 
 function setEquation(value){
-    equationText +=  value
+    equationText += (" ") + value
     console.log(equationText)
     equationContainer.textContent = equationText
 }
@@ -105,8 +118,6 @@ function setCurrentNum(operator) {
       operator1 = operator1
             num2 = currentNum
             console.log(num2, currentNum)
-    
-            // operator2 = operator
             console.log(num1, num2, operator1, operator2)
         }
         return {num1, num2, operator1, operator2}
@@ -119,32 +130,55 @@ operator = operatorValue
 
 function endEquation(num1, num2, operator1){
 let data = setCurrentNum()
-num1 = data.num1
- num2 = data.num2
+num1 = parseInt(data.num1)
+ num2 = parseInt(data.num2)
  operator1 = data.operator1
 
-console.log(data)
-console.log(num1, num2, operator1)
-}
+ if (operator1 == "+"){ 
+    add(num1, num2)
+ } else if (operator1 == "-"){
+     subtract(num1, num2)
+ } else if (operator1 === "x"){
+     multiply(num1, num2)
+ }else if (operator1 === "/"){
+     divisible(num1, num2)
+     }
+    }
+ 
 
 
 
 
 
 function add (num1, num2){
-    return num1 + num2
+   result = num1 + num2
+   inputContainer.innerText = result
+   equationContainer.innerText = equationText+= (" " + result)
 }
+
 function subtract(num1, num2){
-    return num1 - num2
+    result = num1 - num2
+    inputContainer.innerText = result
+    equationContainer.innerText = equationText+= (" " + result)
 }
+
+
 function multiply(num, num2){
-    return num1 * num2
+    result = num1 * num2
+    inputContainer.innerText = result 
+    equationContainer.innerText = equationText+= (" " + result)
 }
+
 function divide(num1, num2) {
-    let answer = num1 / num2
-    return Math.round(answer *100)/100
+    let result= num1 / num2
+    inputContainer.innerText = result
+    equationContainer.innerText = equationText+= (" " +result)
 }
+
 function divisible(num1, num2){
-    return num1 % num2
+    result = num1 % num2
+    inputContainer.innerText = result
+    equationContainer.innerText = equationText+=(" " +result)
     // return Math.round(answer * 100) / 100
 }
+
